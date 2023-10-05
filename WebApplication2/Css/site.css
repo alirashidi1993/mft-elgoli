@@ -1,0 +1,12 @@
+﻿@import 'fonts.css';
+
+body {
+    direction:rtl;
+    font-family:vazir;
+}
+.bottom-attached
+{
+    position:absolute;
+    bottom:0px;
+    max-width:100%;
+}
