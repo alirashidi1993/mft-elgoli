@@ -15,7 +15,19 @@ namespace WebApplication2
         protected void Page_Load(object sender, EventArgs e)
         {
             DbContext dbContext = new DbContext();
-            moshtariha= dbContext.GetCustomers();
+            moshtariha= dbContext.SearchCustomers("");
+            
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            DbContext paygahDade = new DbContext();
+            moshtariha= paygahDade.SearchCustomers(txt_search.Text);
+        }
+
+        protected void ImageButton1_Command(object sender, CommandEventArgs e)
+        {
             
         }
     }

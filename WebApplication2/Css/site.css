@@ -10,3 +10,11 @@ body {
     bottom:0px;
     max-width:100%;
 }
+.btn-search{
+    background:transparent;
+    border:none;
+    padding :6px 20px;
+}
+.btn-search:hover{
+    background-color:#f1f1f1;
+}

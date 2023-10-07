@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\bootstrap.icons.css" />
     <Content Include="Css\bootstrap.min.css" />
     <Content Include="Css\fonts.css" />
     <Content Include="Css\site.css" />
@@ -110,6 +111,7 @@
     <Content Include="Images\birds-png-3514.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Images\delete.svg" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
