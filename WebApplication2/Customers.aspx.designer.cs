@@ -15,6 +15,60 @@ namespace WebApplication2
     {
 
         /// <summary>
+        /// txt_firstname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_firstname;
+
+        /// <summary>
+        /// txt_lastname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_lastname;
+
+        /// <summary>
+        /// txt_codemelli control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_codemelli;
+
+        /// <summary>
+        /// txt_mobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_mobile;
+
+        /// <summary>
+        /// txt_address control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_address;
+
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>
@@ -33,12 +87,12 @@ namespace WebApplication2
         protected global::System.Web.UI.WebControls.TextBox txt_search;
 
         /// <summary>
-        /// ImageButton1 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using WebApplication2.DataAcessLayer.Models;
 
@@ -11,14 +12,12 @@ namespace WebApplication2.DataAcessLayer
 
         public DbContext()
         {
-            SqlConnection = new SqlConnection("server=MFTMASTER1\\TNC;database=Amlak;trusted_connection=true");
+            SqlConnection = new SqlConnection("server=DESKTOP-DMMGNAE;database=Amlak;trusted_connection=true");
             sqlCommand = new SqlCommand("", SqlConnection);
         }
-       
-        public List<Customer> SearchCustomers(string searchText)
-        {
-            List<Customer> ListCustomers = new List<Customer>();
 
+        public DataTable SearchCustomers(string searchText)
+        {
             SqlConnection.Open();
             if (string.IsNullOrEmpty(searchText))
             {
@@ -33,20 +32,35 @@ namespace WebApplication2.DataAcessLayer
                                         Mobile like N'%{searchText}%' or
                                         Address like N'%{searchText}%'";
             }
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            while (sqlDataReader.Read())
-            {
-                Customer customer = new Customer();
-                customer.Id = sqlDataReader.GetInt64(0);
-                customer.FirstName = sqlDataReader.GetString(1);
-                customer.LastName = sqlDataReader.GetString(2);
-                customer.CodeMelli = sqlDataReader.GetString(3);
-                customer.Mobile = sqlDataReader.GetString(4);
-                customer.Address = sqlDataReader.GetString(5);
-                ListCustomers.Add(customer);
-            }
+
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlCommand);
+            DataSet customers = new DataSet();
+
+            adapter.Fill(customers, "Moshtariha");
+
             SqlConnection.Close();
-            return ListCustomers;
+            return customers.Tables["Moshtariha"];
+        }
+        public void DeleteCustomer(long customerId)
+        {
+            SqlConnection.Open();
+            sqlCommand.CommandText =
+                $"delete from customers where Id={customerId}";
+            sqlCommand.ExecuteNonQuery();
+            SqlConnection.Close();
+        }
+        public void AddCustomer(Customer moshtariJadid)
+        {
+            SqlConnection.Open();
+            sqlCommand.CommandText = $@"insert into customers values(
+                                        N'{moshtariJadid.FirstName}',
+                                        N'{moshtariJadid.LastName}',
+                                        N'{moshtariJadid.CodeMelli}',
+                                        N'{moshtariJadid.Mobile}',
+                                        N'{moshtariJadid.Address}')";
+            sqlCommand.ExecuteNonQuery();
+            SqlConnection.Close();
+
         }
     }
 }
