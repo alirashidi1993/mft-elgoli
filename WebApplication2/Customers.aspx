@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div>
-                <asp:GridView ID="GridView1" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowDeleting="GridView1_RowDeleting">
+                <asp:GridView ID="GridView1" CssClass="table table-striped table-bordered" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" OnRowDeleting="GridView1_RowDeleting" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
                     <Columns>
                         <asp:BoundField DataField="FirstName" HeaderText="نام" />
                         <asp:BoundField DataField="LastName" HeaderText="نام خانوادگی" />
@@ -64,6 +64,9 @@
                         <asp:BoundField DataField="Id" Visible="False" />
                         <asp:CommandField ButtonType="Image" DeleteImageUrl="~/Images/delete.png" DeleteText="" ShowDeleteButton="True">
                             <ControlStyle Height="24px" Width="24px" />
+                        </asp:CommandField>
+                        <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/cancel.svg" EditImageUrl="~/Images/edit.png" ShowEditButton="True" UpdateImageUrl="~/Images/save.png">
+                        <ControlStyle Height="24px" Width="24px" />
                         </asp:CommandField>
                     </Columns>
                 </asp:GridView>

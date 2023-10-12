@@ -15,11 +15,10 @@ namespace WebApplication2
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            DbContext dbContext = new DbContext();
-            DataTable moshtariha = dbContext.SearchCustomers("");
-
-            GridView1.DataSource = moshtariha;
-            GridView1.DataBind();
+            if (!Page.IsPostBack)
+            {
+                RefreshData();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -59,6 +58,46 @@ namespace WebApplication2
             context.AddCustomer(moshtari);
 
             Page.Response.Redirect(Page.Request.RawUrl);
+        }
+
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            RefreshData();
+
+        }
+
+        public void RefreshData()
+        {
+            DbContext dbContext = new DbContext();
+            DataTable moshtariha = dbContext.SearchCustomers("");
+
+            GridView1.DataSource = moshtariha;
+            GridView1.DataBind();
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            RefreshData();
+        }
+
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            Customer moshtari = new Customer();
+
+            moshtari.Id =Convert.ToInt64(e.Keys[0]);
+
+            moshtari.FirstName = e.NewValues["FirstName"].ToString();
+            moshtari.LastName = e.NewValues["LastName"].ToString();
+            moshtari.CodeMelli = e.NewValues["CodeMelli"].ToString();
+            moshtari.Mobile = e.NewValues["Mobile"].ToString();
+            moshtari.Address = e.NewValues["Address"].ToString();
+
+            DbContext context = new DbContext();
+            context.UpdateCustomer(moshtari);
+            RefreshData();
+
         }
     }
 }

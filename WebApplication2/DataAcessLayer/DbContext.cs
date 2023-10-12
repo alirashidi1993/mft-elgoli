@@ -60,7 +60,20 @@ namespace WebApplication2.DataAcessLayer
                                         N'{moshtariJadid.Address}')";
             sqlCommand.ExecuteNonQuery();
             SqlConnection.Close();
+        }
 
+        public void UpdateCustomer(Customer moshtari)
+        {
+            SqlConnection.Open();
+            sqlCommand.CommandText = $@"update customers set 
+                                      FirstName=N'{moshtari.FirstName}',
+                                      LastName=N'{moshtari.LastName}',
+                                      CodeMelli=N'{moshtari.CodeMelli}',
+                                      Mobile=N'{moshtari.Mobile}',
+                                      Address=N'{moshtari.Address}'
+                                      where Id={moshtari.Id}";
+            sqlCommand.ExecuteNonQuery();
+            SqlConnection.Close();
         }
     }
 }
