@@ -96,7 +96,8 @@ namespace WebApplication2
 
             DbContext context = new DbContext();
             context.UpdateCustomer(moshtari);
-            RefreshData();
+
+            Page.Response.Redirect(Page.Request.RawUrl);
 
         }
     }
