@@ -68,13 +68,16 @@
                         <asp:CommandField ButtonType="Image" CancelImageUrl="~/Images/cancel.svg" EditImageUrl="~/Images/edit.png" ShowEditButton="True" UpdateImageUrl="~/Images/save.png">
                         <ControlStyle Height="24px" Width="24px" />
                         </asp:CommandField>
+                        
+                        <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="CustomerDetails.aspx?customerId={0}" HeaderText="جزئیات" Text="مشاهده" />
+                        
                     </Columns>
                 </asp:GridView>
             </div>
 
         </div>
     </div>
-
+    <a href="CustomerDetails.aspx?Name=Ali&Mobile=09145214785">Go To Details</a>
 </asp:Content>
 
 

@@ -75,5 +75,30 @@ namespace WebApplication2.DataAcessLayer
             sqlCommand.ExecuteNonQuery();
             SqlConnection.Close();
         }
+        public Customer GetById(long customerId)
+        {
+            SqlConnection.Open();
+            sqlCommand.CommandText = 
+                $"select * from customers where Id={customerId}";
+
+            SqlDataReader reader = sqlCommand.ExecuteReader();
+
+            Customer moshtari = new Customer();
+            while(reader.Read())
+            {
+                moshtari.Id = reader.GetInt64(0);
+                moshtari.FirstName = reader.GetString(1);
+                moshtari.LastName = reader.GetString(2);
+                moshtari.CodeMelli = reader.GetString(3);
+                moshtari.Mobile = reader.GetString(4);
+                moshtari.Address = reader.GetString(5);
+                moshtari.Birthdate = reader.GetDateTime(6);
+                moshtari.CodePosti = reader.GetString(7);
+                moshtari.ImageUrl = reader.GetString(8);
+                moshtari.FatherName = reader.GetString(9);
+            }
+
+            return moshtari;
+        }
     }
 }
